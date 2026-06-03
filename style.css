@@ -951,3 +951,147 @@ footer {
     padding: 2.5rem 1.5rem;
   }
 }
+
+/* ================== BACKGROUND DECORATIONS ================== */
+.bg-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Faint Dot Grid Pattern */
+.bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(158, 104, 153, 0.08) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  opacity: 0.8;
+}
+
+/* Floating Light Blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  -webkit-filter: blur(100px);
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  animation: floatBlob 20s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(243, 204, 222, 0.5); /* Pink cream */
+  top: -10%;
+  left: -10%;
+  animation-duration: 25s;
+}
+
+.blob-2 {
+  width: 600px;
+  height: 600px;
+  background: rgba(214, 168, 196, 0.4); /* Pink soft */
+  bottom: -15%;
+  right: -10%;
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  width: 450px;
+  height: 450px;
+  background: rgba(186, 136, 174, 0.3); /* Mauve */
+  top: 40%;
+  right: 15%;
+  animation-duration: 22s;
+  animation-delay: -10s;
+}
+
+.blob-4 {
+  width: 400px;
+  height: 400px;
+  background: rgba(158, 104, 153, 0.25); /* Purple mid */
+  bottom: 25%;
+  left: 10%;
+  animation-duration: 28s;
+  animation-delay: -15s;
+}
+
+/* Floating Abstract Shapes */
+.shape {
+  position: absolute;
+  color: var(--purple-mid);
+  opacity: 0.06;
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  font-weight: 700;
+  user-select: none;
+  animation: floatShape 15s infinite linear;
+}
+
+.shape-1 {
+  top: 15%;
+  left: 20%;
+  animation-duration: 18s;
+  animation-delay: -2s;
+}
+
+.shape-2 {
+  top: 25%;
+  right: 25%;
+  font-size: 3.5rem;
+  animation-duration: 24s;
+  animation-delay: -7s;
+}
+
+.shape-3 {
+  bottom: 30%;
+  left: 15%;
+  animation-duration: 20s;
+  animation-delay: -12s;
+}
+
+.shape-4 {
+  bottom: 20%;
+  right: 20%;
+  font-size: 2rem;
+  animation-duration: 16s;
+  animation-delay: -4s;
+}
+
+/* Animations */
+@keyframes floatBlob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes floatShape {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
