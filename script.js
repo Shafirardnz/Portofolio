@@ -19,15 +19,22 @@ document.addEventListener("DOMContentLoaded", () => {
       navMenu.classList.toggle("active");
     });
 
-    // Close menu when a link is clicked
+    // Navigation Link handling
     navLinks.forEach(link => {
       link.addEventListener("click", (e) => {
-        const targetId = link.getAttribute("href").substring(1);
-        if (targetId) {
-          e.preventDefault();
-          scrollToSection(targetId);
-          menuToggle.classList.remove("active");
-          navMenu.classList.remove("active");
+        const href = link.getAttribute("href");
+        
+        // Check if the link is a local anchor (starts with #)
+        if (href.startsWith("#")) {
+          const targetId = href.substring(1);
+          const element = document.getElementById(targetId);
+          
+          if (element) {
+            e.preventDefault();
+            scrollToSection(targetId);
+            menuToggle.classList.remove("active");
+            navMenu.classList.remove("active");
+          }
         }
       });
     });

@@ -794,3 +794,160 @@ footer {
     gap: 0.8rem;
   }
 }
+
+/* ================== CATEGORY SELECTOR ================== */
+.category-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.category-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  padding: 3rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--pink-soft);
+  background: var(--white);
+}
+
+.category-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s ease;
+}
+
+.category-card:hover .category-icon {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.category-card h4 {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--purple-dark);
+  margin-bottom: 0.8rem;
+}
+
+.category-card p {
+  font-size: 0.98rem;
+  opacity: 0.85;
+  color: var(--purple-deep);
+  margin-bottom: 2rem;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.category-btn {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--purple-mid);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-btn {
+  transform: translateX(5px);
+  color: var(--purple-dark);
+}
+
+/* ================== PROJECT GRID FOR SUB-PAGES ================== */
+.project-grid-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 1rem;
+}
+
+.project-grid-page .project-card {
+  grid-template-columns: 1fr;
+}
+
+.project-grid-page .project-image {
+  height: 250px;
+}
+
+/* Sub-page Specific Header Styling */
+.portfolio-header {
+  padding-top: 7rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.portfolio-header h2 {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  color: var(--purple-dark);
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-header p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-back {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--purple-dark);
+  padding: 0.8rem 1.8rem;
+  border-radius: 50px;
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  margin-top: 1.5rem;
+}
+
+.btn-back:hover {
+  transform: translateY(-2px);
+  background: var(--white);
+  border-color: var(--pink-soft);
+  box-shadow: 0 8px 20px rgba(91, 55, 101, 0.12);
+}
+
+@media (max-width: 992px) {
+  .project-grid-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .category-card {
+    padding: 2.5rem 1.5rem;
+  }
+}

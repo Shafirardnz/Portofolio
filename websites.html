@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website Projects | Shafira Ardaneza Azahrah</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <h1 class="logo" onclick="window.location.href='index.html'">PORTOFOLIO</h1>
+      
+      <!-- Hamburger Menu Button -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#skills" class="nav-link">Skills</a>
+        <a href="index.html#portfolio" class="nav-link">Portfolio</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="main-content">
+    
+    <!-- HEADER SECTION -->
+    <section class="portfolio-header">
+      <h2>Website Development</h2>
+      <p>Kumpulan website responsif, landing page interaktif, dan media edukasi digital yang saya kembangkan.</p>
+      <a href="index.html#portfolio" class="btn-back">&larr; Kembali ke Beranda</a>
+    </section>
+
+    <!-- PORTFOLIO GRID -->
+    <section class="section">
+      <div class="project-grid-page">
+
+        <!-- Project 1: Ayo Belajar Tajwid -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Tajwid.png" alt="Ayo Belajar Tajwid">
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Educational Website</span>
+            <h4>Ayo Belajar Tajwid</h4>
+            <p>
+              Website edukatif interaktif untuk membantu anak-anak belajar hukum bacaan tajwid secara terstruktur, dilengkapi dengan contoh suara dan kuis interaktif.<br>
+              <strong>Role :</strong> Programmer & UI/UX Design
+            </p>
+            <div class="project-skills">
+              <span>VS Code</span>
+              <span>HTML & CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: KEMENGEZ -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="Kemengez.png" alt="KEMENGEZ">
+          </div>
+          <div class="project-info">
+            <span class="project-tag">Mental Health Website</span>
+            <h4>KEMENGEZ</h4>
+            <p>
+              Website edukatif sebagai ruang aman digital bagi Gen Z untuk belajar, bercerita, dan memahami kesehatan mental secara santai tanpa stigma.<br>
+              <strong>Role :</strong> UI/UX Design
+            </p>
+            <div class="project-skills">
+              <span>VS Code</span>
+              <span>HTML & CSS</span>
+              <span>JavaScript</span>
+              <span>Figma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Wawa's Store -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="WawasStore.png" alt="Wawa's Store">
+          </div>
+          <div class="project-info">
+            <span class="project-tag">E-Commerce Website</span>
+            <h4>Wawa's Store</h4>
+            <p>
+              Landing page toko furnitur premium bergaya modern, menampilkan koleksi sofa berkualitas tinggi dengan desain elegan dan kenyamanan maksimal.<br>
+              <strong>Role :</strong> UI/UX Design
+            </p>
+            <div class="project-skills">
+              <span>VS Code</span>
+              <span>HTML & CSS</span>
+              <span>JavaScript</span>
+              <span>Figma</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2026 Portofolio Shafira. Dibuat dengan &hearts;.</p>
+      <p>&copy; Siswi SMK Negeri 12 Surabaya.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
