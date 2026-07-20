@@ -59,21 +59,6 @@
         <p class="hero-subtitle">Student | Game & Web Development</p>
         <p class="hero-desc">Creating interactive experiences through immersive games and responsive websites, with a strong focus on modern UI/UX design.</p>
         <button class="btn-primary" onclick="scrollToSection('portfolio')">View Works</button>
-
-        <!-- Video Teaser Thumbnail -->
-        <div class="teaser-container">
-          <div class="teaser-thumbnail" id="openTeaserBtn">
-            <img src="Foto.jpg" alt="Watch Teaser Video" class="teaser-poster">
-            <div class="teaser-overlay">
-              <span class="play-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </span>
-              <span class="teaser-label">Watch Project Teaser</span>
-            </div>
-          </div>
-        </div>
       </div>
       <div class="hero-img-container">
         <div class="hero-img-glow"></div>
@@ -212,20 +197,6 @@
       <p>&copy; Student at SMK Negeri 12 Surabaya.</p>
     </div>
   </footer>
-
-  <!-- VIDEO TEASER MODAL -->
-  <div class="video-modal" id="videoModal" aria-hidden="true">
-    <div class="video-modal-overlay" id="closeTeaserOverlay"></div>
-    <div class="video-modal-content">
-      <button class="video-modal-close" id="closeTeaserBtn" aria-label="Close Video">&times;</button>
-      <div class="video-responsive-container">
-        <video id="teaserVideo" controls poster="Foto.jpg">
-          <source src="teaser.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
