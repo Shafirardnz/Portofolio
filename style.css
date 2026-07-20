@@ -1278,7 +1278,8 @@ footer {
   background: #000;
 }
 
-.video-responsive-container video {
+.video-responsive-container video,
+.video-responsive-container iframe {
   position: absolute;
   top: 0;
   left: 0;

@@ -40,37 +40,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================== VIDEO TEASER CONTROL ==================
+  // ================== VIDEO TEASER CONTROL (YOUTUBE) ==================
   const openTeaserBtn = document.getElementById("openTeaserBtn");
   const videoModal = document.getElementById("videoModal");
   const closeTeaserBtn = document.getElementById("closeTeaserBtn");
   const closeTeaserOverlay = document.getElementById("closeTeaserOverlay");
-  const teaserVideo = document.getElementById("teaserVideo");
+  const teaserIframe = document.getElementById("teaserVideo");
 
-  if (openTeaserBtn && videoModal) {
-    // Open Modal & Play Video
+  if (openTeaserBtn && videoModal && teaserIframe) {
+    const youtubeUrl = teaserIframe.getAttribute("data-src");
+
+    // Open Modal & Load + Autoplay YouTube video
     openTeaserBtn.addEventListener("click", () => {
       videoModal.classList.add("active");
       videoModal.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden"; // Prevent scrolling main page
 
-      if (teaserVideo) {
-        teaserVideo.play().catch(err => {
-          console.log("Autoplay was prevented by browser security:", err);
-        });
-      }
+      // Load YouTube video with autoplay
+      teaserIframe.setAttribute("src", youtubeUrl + "&autoplay=1");
     });
 
-    // Close Modal & Reset Video Function
+    // Close Modal & Stop YouTube video
     const closeModal = () => {
       videoModal.classList.remove("active");
       videoModal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = ""; // Restore scrolling
 
-      if (teaserVideo) {
-        teaserVideo.pause();
-        teaserVideo.currentTime = 0; // Rewind video to beginning
-      }
+      // Remove src to stop video and reset — cleanest way to stop YouTube
+      teaserIframe.setAttribute("src", "");
     };
 
     // Close events
