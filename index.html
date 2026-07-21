@@ -53,17 +53,45 @@
     
     <!-- HERO -->
     <section class="hero">
+      <!-- ID CARD / LANYARD (Left) -->
+      <div class="id-card-wrapper">
+        <div class="lanyard-rope-container">
+          <div class="lanyard-rope"></div>
+          <div class="lanyard-hook">
+            <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 0C7.134 0 4 3.134 4 7C4 10.314 6.3 13.07 9.4 13.82V15.5C9.4 15.776 9.624 16 9.9 16H12.1C12.376 16 12.6 15.776 12.6 15.5V13.82C15.7 13.07 18 10.314 18 7C18 3.134 14.866 0 11 0ZM11 12C8.239 12 6 9.761 6 7C6 4.239 8.239 2 11 2C13.761 2 16 4.239 16 7C16 9.761 13.761 12 11 12Z" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+        <div class="id-card">
+          <div class="id-card-top-stripe"></div>
+          <div class="id-card-photo">
+            <img src="Foto.jpg" alt="Shafira's Profile Photo">
+          </div>
+          <div class="id-card-info">
+            <p class="id-card-name">Shafira A.</p>
+            <p class="id-card-role">Game &amp; Web Dev</p>
+          </div>
+          <div class="id-card-divider"></div>
+          <p class="id-card-school">SMK Negeri 12 Surabaya</p>
+          <p class="id-card-watermark">Student</p>
+        </div>
+      </div>
+
+      <!-- HERO TEXT (Right) -->
       <div class="hero-text">
         <span class="hero-greeting">Hello, I am</span>
         <h2>Shafira Ardaneza Azahrah</h2>
-        <p class="hero-subtitle">Student | Game & Web Development</p>
+        <p class="hero-subtitle">Student | Game &amp; Web Development</p>
         <p class="hero-desc">Creating interactive experiences through immersive games and responsive websites, with a strong focus on modern UI/UX design.</p>
-        <button class="btn-primary" onclick="scrollToSection('portfolio')">View Works</button>
-      </div>
-      <div class="hero-img-container">
-        <div class="hero-img-glow"></div>
-        <div class="hero-img">
-          <img src="Foto.jpg" alt="Shafira's Profile Photo">
+        <div class="btn-wrapper">
+          <button class="btn-primary" onclick="scrollToSection('portfolio')">View Works</button>
+          <span class="btn-badge" onclick="scrollToSection('portfolio')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
         </div>
       </div>
     </section>

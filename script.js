@@ -85,4 +85,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ================== ACTIVE SECTION NAVIGATION HIGHLIGHT ==================
+  const sections = document.querySelectorAll("section[id], div[id]");
+  const navLinksList = document.querySelectorAll(".nav-link");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -60% 0px",
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        navLinksList.forEach(link => {
+          if (link.getAttribute("href") === `#${id}`) {
+            link.classList.add("active");
+          } else {
+            link.classList.remove("active");
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 });
