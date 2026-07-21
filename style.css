@@ -244,7 +244,7 @@ body {
   grid-template-columns: 1fr 1.3fr;
   align-items: center;
   gap: 4rem;
-  padding: 10rem 3rem 4rem 3rem;
+  padding: 4rem 3rem 4rem 3rem;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 30px;
@@ -253,7 +253,9 @@ body {
   -webkit-backdrop-filter: blur(10px);
   margin-top: 5.5rem;
   margin-bottom: 3rem;
+  overflow: visible; /* allow lanyard strap to bleed above the box */
 }
+
 
 .hero-greeting {
   font-family: var(--font-title);
@@ -291,59 +293,132 @@ body {
   max-width: 550px;
 }
 
-/* ID CARD / LANYARD SYSTEM */
+/* ==================
+   LANYARD + ID CARD  (lc-* prefix, polaroid style — matches reference)
+   ================== */
+
+/* Outer wrapper: stacks strap → hardware → card vertically, centered */
 .id-card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  /* Pull the whole assembly up so the strap bleeds above the hero box top */
+  margin-top: -6rem;
+  animation: floatProfile 6s infinite ease-in-out;
 }
 
-.lanyard-container {
-  position: relative;
+/* ---------- STRAP ---------- */
+/* Thin vertical bar that disappears behind/above the hero card top border */
+.lc-strap-bar {
+  width: 10px;
+  height: 6rem; /* equals the upward offset so it spans exactly from top of hero box */
+  background: var(--purple-dark);
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 8px rgba(91,55,101,0.25);
+}
+
+/* ---------- METAL HARDWARE ---------- */
+.lc-hardware {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* pull upward so strap top aligns with hero box top border (10rem padding-top) */
-  margin-top: -10rem;
-  animation: floatProfile 6s infinite ease-in-out;
-  z-index: 2;
+  gap: 0;
 }
 
-.lanyard-mockup-img {
-  width: 250px;
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 15px 35px rgba(91, 55, 101, 0.15));
+/* O-ring */
+.lc-ring {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #b8b8b8;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.25),
+    0 2px 5px rgba(0,0,0,0.15);
+  margin-bottom: -2px; /* slight overlap with clip */
 }
 
-.id-card-watermark-container {
-  position: absolute;
-  /* 22px from bottom sits in the lavender bottom strip of the plastic holder */
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 40px;
+/* Snap clip (swivel hook) — contains SVG */
+.lc-clip {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  z-index: 5;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  margin-bottom: -4px; /* blends into card hole */
 }
 
-.id-card-bg-text {
-  font-family: var(--font-title);
-  font-size: 1.8rem;
-  font-weight: 800;
-  /* raised 5% from original 0.06 */
-  color: rgba(91, 55, 101, 0.11);
-  letter-spacing: 2.5px;
+/* ---------- POLAROID CARD ---------- */
+.lc-card {
+  width: 230px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 12px 12px 0 12px;
+  box-shadow:
+    0 25px 50px rgba(91,55,101,0.18),
+    0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Small punch hole at the very top of the card (where the clip attaches) */
+.lc-card-hole {
+  width: 16px;
+  height: 16px;
+  background: var(--lavender-light, #f3eaf8);
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+}
+
+/* Dark photo area — like a polaroid film frame */
+.lc-card-photo {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a1a;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.lc-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.lc-card:hover .lc-card-photo img {
+  transform: scale(1.04);
+}
+
+/* White bottom strip — like the polaroid white border at the bottom */
+.lc-card-footer {
+  width: 100%;
+  padding: 10px 12px 14px 12px;
   text-align: center;
 }
+
+/* Cursive italic name text in the footer (like "Freelancer" in reference) */
+.lc-card-cursive {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--purple-dark);
+  letter-spacing: 1px;
+  user-select: none;
+  display: block;
+}
+
+
 
 /* CTA BUTTON WITH BADGE */
 .btn-wrapper {
@@ -749,12 +824,12 @@ footer {
     margin-right: auto;
   }
 
-  .lanyard-container {
-    margin-top: -8rem;
+  .lc-card {
+    width: 205px;
   }
 
-  .lanyard-mockup-img {
-    width: 210px;
+  .lc-card-photo {
+    height: 195px;
   }
 
   .project-card {
@@ -842,7 +917,6 @@ footer {
   .contact-item {
     padding: 1.2rem;
     gap: 1rem;
-    width: 100%;
     box-sizing: border-box;
   }
 }
@@ -854,16 +928,28 @@ footer {
   }
 
   .hero {
-    padding: 7rem 1rem 3rem 1rem;
+    padding: 2rem 1rem 3rem 1rem;
     border-radius: 20px;
   }
 
-  .lanyard-container {
-    margin-top: -7rem;
+  .id-card-wrapper {
+    margin-top: -5rem;
   }
 
-  .lanyard-mockup-img {
-    width: 180px;
+  .lc-strap-bar {
+    height: 5rem;
+  }
+
+  .lc-card {
+    width: 185px;
+  }
+
+  .lc-card-photo {
+    height: 175px;
+  }
+
+  .lc-card-cursive {
+    font-size: 1.3rem;
   }
 
   .section-about {
