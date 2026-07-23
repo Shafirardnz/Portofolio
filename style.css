@@ -315,16 +315,14 @@ body {
   left: 10px;
   width: 220px;
   height: 220px;
-  background: linear-gradient(135deg, rgba(91, 55, 101, 0.15) 0%, rgba(186, 136, 174, 0.05) 100%);
-  border: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(253, 244, 248, 0.95) 0%, rgba(245, 235, 247, 0.9) 100%);
+  border: 1px solid rgba(91, 55, 101, 0.15);
   border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(91, 55, 101, 0.12);
+  box-shadow: 0 15px 35px rgba(91, 55, 101, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2; /* changed from 3 to place behind record */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  z-index: 2; /* placed behind record */
   overflow: hidden;
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
 }
