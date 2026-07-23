@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
 
@@ -53,16 +53,16 @@
     
     <!-- HERO -->
     <section class="hero">
-      <!-- VINYL RECORD PLAYER (Left) -->
+      <!-- VINYL TURNTABLE PLAYER (Left) -->
       <div class="vinyl-container">
         <div class="vinyl-player-base">
-          <!-- Album Sleeve / Cover Jacket -->
-          <div class="vinyl-sleeve">
-            <div class="sleeve-art">
-              <span class="sleeve-title">SHAFIRA</span>
-              <span class="sleeve-subtitle">PORTFOLIO</span>
-              <div class="sleeve-decor">✦</div>
-            </div>
+          <!-- Decorative dots in corners -->
+          <div class="turntable-dots-tl"></div>
+          <div class="turntable-dots-bl"></div>
+          
+          <!-- Control Panel Switch -->
+          <div class="turntable-ctrl">
+            <div class="ctrl-knob"></div>
           </div>
           
           <!-- Vinyl Record -->
@@ -74,11 +74,20 @@
               </div>
               <div class="vinyl-shine"></div>
             </div>
+            
+            <!-- Pink Star Overlay -->
+            <div class="vinyl-star">
+              <svg viewBox="0 0 24 24" xml:space="preserve">
+                <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+              </svg>
+            </div>
           </div>
 
           <!-- Tonearm / Needle arm -->
           <div class="tonearm-container">
-            <div class="tonearm-base"></div>
+            <div class="tonearm-base">
+              <div class="tonearm-base-inner"></div>
+            </div>
             <div class="tonearm-arm"></div>
             <div class="tonearm-head"></div>
           </div>
