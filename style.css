@@ -322,7 +322,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3;
+  z-index: 2; /* changed from 3 to place behind record */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
@@ -373,7 +373,7 @@ body {
   left: 65px; /* partially slides out by default */
   width: 220px;
   height: 220px;
-  z-index: 2;
+  z-index: 3; /* changed from 2 to place on top of sleeve */
   transition: left 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
