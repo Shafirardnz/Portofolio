@@ -258,6 +258,53 @@ document.addEventListener("DOMContentLoaded", () => {
   initAlbumCarousel("gameCarousel");
   initAlbumCarousel("webCarousel");
 
+  // ================== TYPEWRITER ANIMATION (HERO NAME) ==================
+  const typewriterText = document.getElementById("typewriterText");
+  if (typewriterText) {
+    const fullName = "Shafira Ardaneza Azahrah";
+    typewriterText.textContent = "";
+    let charIndex = 0;
+
+    function typeCharacter() {
+      if (charIndex < fullName.length) {
+        typewriterText.textContent += fullName.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeCharacter, 70); // 70ms typing delay per character
+      }
+    }
+
+    // Start typewriter effect automatically on page load
+    setTimeout(typeCharacter, 350);
+  }
+
+  // ================== SCROLL REVEAL PER SECTION ==================
+  const revealTargets = document.querySelectorAll(".hero, .section-about, .section-skills, .section-portfolio, .section-contact");
+  
+  const revealObserverOptions = {
+    root: null,
+    threshold: 0.12
+  };
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target); // Trigger only once when entering viewport
+      }
+    });
+  }, revealObserverOptions);
+
+  revealTargets.forEach(target => {
+    target.classList.add("reveal-section");
+    revealObserver.observe(target);
+  });
+
+  // ================== STAGGER ANIMATION FOR SKILLS ==================
+  const skillItems = document.querySelectorAll(".skill");
+  skillItems.forEach((skill, idx) => {
+    skill.style.transitionDelay = `${idx * 0.08}s`;
+  });
+
   // ================== ACTIVE SECTION NAVIGATION HIGHLIGHT ==================
   const sections = document.querySelectorAll("section[id], div[id]");
   const navLinksList = document.querySelectorAll(".nav-link");
