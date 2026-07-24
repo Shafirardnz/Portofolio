@@ -40,6 +40,51 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ================== DARK / LIGHT MODE THEME SWITCHER ==================
+  const themeToggleBtn = document.getElementById("themeToggle");
+
+  function getPreferredTheme() {
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme) {
+      return savedTheme;
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("portfolio-theme", theme);
+  }
+
+  // Apply initial theme on load
+  const initialTheme = getPreferredTheme();
+  applyTheme(initialTheme);
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      const activeTheme = document.documentElement.getAttribute("data-theme") || "light";
+      const nextTheme = activeTheme === "light" ? "dark" : "light";
+
+      // Trigger vinyl spin animation
+      themeToggleBtn.classList.remove("is-spinning");
+      void themeToggleBtn.offsetWidth; // Force CSS reflow
+      themeToggleBtn.classList.add("is-spinning");
+
+      applyTheme(nextTheme);
+
+      setTimeout(() => {
+        themeToggleBtn.classList.remove("is-spinning");
+      }, 500);
+    });
+  }
+
+  // Listen for OS system preference changes
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("portfolio-theme")) {
+      applyTheme(e.matches ? "dark" : "light");
+    }
+  });
+
   // ================== VIDEO TEASER CONTROL (YOUTUBE) ==================
   const openTeaserBtn = document.getElementById("openTeaserBtn");
   const videoModal = document.getElementById("videoModal");
