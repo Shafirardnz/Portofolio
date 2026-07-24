@@ -86,6 +86,178 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ================== 3D ALBUM CAROUSEL CONTROLLER ==================
+  function initAlbumCarousel(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const cards = Array.from(container.querySelectorAll(".album-card"));
+    const prevBtn = container.querySelector(".prev-btn");
+    const nextBtn = container.querySelector(".next-btn");
+    const dotsContainer = container.querySelector(".carousel-dots");
+    
+    if (cards.length === 0) return;
+
+    let currentIndex = 0;
+    let autoSlideTimer = null;
+    let isHovered = false;
+
+    // Build indicator dots
+    dotsContainer.innerHTML = "";
+    cards.forEach((_, idx) => {
+      const dot = document.createElement("div");
+      dot.classList.add("carousel-dot");
+      if (idx === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        currentIndex = idx;
+        updateCarousel();
+        resetAutoSlide();
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.querySelectorAll(".carousel-dot"));
+
+    function updateCarousel() {
+      const total = cards.length;
+
+      cards.forEach((card, idx) => {
+        // Reset 3D positioning classes
+        card.classList.remove(
+          "active-card",
+          "prev-card",
+          "next-card",
+          "far-prev-card",
+          "far-next-card"
+        );
+
+        // Calculate cyclic distance from currentIndex
+        let diff = idx - currentIndex;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        if (diff === 0) {
+          card.classList.add("active-card");
+        } else if (diff === -1) {
+          card.classList.add("prev-card");
+        } else if (diff === 1) {
+          card.classList.add("next-card");
+        } else if (diff < -1) {
+          card.classList.add("far-prev-card");
+        } else if (diff > 1) {
+          card.classList.add("far-next-card");
+        }
+      });
+
+      // Update dots
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add("active");
+        } else {
+          dot.classList.remove("active");
+        }
+      });
+    }
+
+    // Card Click Handler: if side card is clicked, bring to center; if active, allow normal actions
+    cards.forEach((card, idx) => {
+      card.addEventListener("click", (e) => {
+        if (idx !== currentIndex) {
+          e.stopPropagation(); // prevent triggering active modal if clicking a side card
+          currentIndex = idx;
+          updateCarousel();
+          resetAutoSlide();
+        }
+      });
+    });
+
+    // Navigation buttons
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateCarousel();
+        resetAutoSlide();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateCarousel();
+        resetAutoSlide();
+      });
+    }
+
+    // Touch / Swipe support for mobile & tablet
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const stage = container.querySelector(".album-carousel-stage");
+
+    if (stage) {
+      stage.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      stage.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+    }
+
+    function handleSwipe() {
+      const threshold = 40;
+      if (touchEndX < touchStartX - threshold) {
+        // Swipe Left -> Next
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateCarousel();
+        resetAutoSlide();
+      } else if (touchEndX > touchStartX + threshold) {
+        // Swipe Right -> Prev
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateCarousel();
+        resetAutoSlide();
+      }
+    }
+
+    // Auto-slide Timer
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideTimer = setInterval(() => {
+        if (!isHovered) {
+          currentIndex = (currentIndex + 1) % cards.length;
+          updateCarousel();
+        }
+      }, 4500);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+
+    function resetAutoSlide() {
+      startAutoSlide();
+    }
+
+    container.addEventListener("mouseenter", () => {
+      isHovered = true;
+    });
+
+    container.addEventListener("mouseleave", () => {
+      isHovered = false;
+    });
+
+    // Initialize state
+    updateCarousel();
+    startAutoSlide();
+  }
+
+  // Initialize both Game & Website Carousels
+  initAlbumCarousel("gameCarousel");
+  initAlbumCarousel("webCarousel");
+
   // ================== ACTIVE SECTION NAVIGATION HIGHLIGHT ==================
   const sections = document.querySelectorAll("section[id], div[id]");
   const navLinksList = document.querySelectorAll(".nav-link");

@@ -1147,9 +1147,9 @@ footer {
   }
 }
 
-/* ================== Y2K PORTFOLIO GRID & CARD SYSTEM ================== */
+/* ================== 3D MUSIC ALBUM CAROUSEL SYSTEM ================== */
 .portfolio-group {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .portfolio-group-title {
@@ -1165,80 +1165,111 @@ footer {
   letter-spacing: 0.5px;
 }
 
-.y2k-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.y2k-card {
+.album-carousel-container {
   position: relative;
-  background: rgba(253, 244, 248, 0.6);
-  border: 1px solid rgba(158, 104, 153, 0.12);
-  border-radius: 24px;
-  padding: 1.1rem;
+  width: 100%;
+  padding: 1.5rem 0 2rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease;
-  box-shadow: 0 10px 25px rgba(91, 55, 101, 0.04);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  align-items: center;
+  user-select: none;
 }
 
-.y2k-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(91, 55, 101, 0.1);
-  border-color: var(--purple-mid);
+.album-carousel-stage {
+  width: 100%;
+  max-width: 960px;
+  height: 480px;
+  position: relative;
+  perspective: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.y2k-badge {
+.album-carousel-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Individual Album Card */
+.album-card {
   position: absolute;
-  top: 1.6rem;
-  right: 1.6rem;
-  z-index: 5;
-  padding: 0.35rem 0.9rem;
+  width: 320px;
+  height: 440px;
+  background: rgba(253, 244, 248, 0.95);
+  border: 1px solid rgba(158, 104, 153, 0.2);
+  border-radius: 24px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(91, 55, 101, 0.08);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1), 
+              filter 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.6s ease,
+              border-color 0.4s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  will-change: transform, opacity, filter;
+}
+
+/* Category Badge - Unified Color Palette */
+.album-badge {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 10;
+  padding: 0.4rem 1rem;
   border-radius: 50px;
   font-family: var(--font-title);
   font-size: 0.72rem;
   font-weight: 800;
   color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--purple-dark), var(--purple-mid));
+  box-shadow: 0 4px 12px rgba(91, 55, 101, 0.25);
   letter-spacing: 0.5px;
 }
 
-/* Badge Color Gradients */
-.badge-green { background: linear-gradient(135deg, #4ade80, #22c55e); }
-.badge-purple { background: linear-gradient(135deg, #a855f7, #7e22ce); }
-.badge-pink { background: linear-gradient(135deg, #f472b6, #db2777); }
-.badge-blue { background: linear-gradient(135deg, #60a5fa, #2563eb); }
-.badge-yellow { background: linear-gradient(135deg, #facc15, #ca8a04); color: #331f00; }
-.badge-teal { background: linear-gradient(135deg, #2dd4bf, #0d9488); }
-.badge-lavender { background: linear-gradient(135deg, #c084fc, #9333ea); }
-
-.y2k-img-container {
-  width: 100%;
-  height: 180px;
-  border-radius: 18px;
-  overflow: hidden;
-  position: relative;
-  background: #e2d1eb;
-  margin-bottom: 1rem;
+.album-badge.badge-alt {
+  background: linear-gradient(135deg, var(--mauve), var(--purple-deep));
 }
 
-.y2k-img-container img {
+/* Full Bleed Image Container & Gradient Fade */
+.album-img-wrap {
+  width: 100%;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: var(--purple-mid);
+}
+
+.album-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: block;
+  transition: transform 0.6s ease;
 }
 
-.y2k-card:hover .y2k-img-container img {
-  transform: scale(1.05);
+/* Smooth Gradient Overlay fading image into details */
+.album-img-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  background: linear-gradient(to bottom, rgba(253, 244, 248, 0) 0%, rgba(253, 244, 248, 0.95) 100%);
+  pointer-events: none;
 }
 
-.y2k-img-overlay {
+.album-play-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1252,55 +1283,62 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  z-index: 2;
+  z-index: 5;
 }
 
-.y2k-card:hover .y2k-img-overlay {
+.album-card:hover .album-play-overlay {
   opacity: 1;
 }
 
-.y2k-play-icon {
-  width: 44px;
-  height: 44px;
+.album-play-icon {
+  width: 48px;
+  height: 48px;
   background: #ffffff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--purple-dark);
-  box-shadow: 0 4px 15px rgba(91, 55, 101, 0.25);
+  box-shadow: 0 4px 15px rgba(91, 55, 101, 0.3);
   transform: scale(0.9);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.y2k-card:hover .y2k-play-icon {
-  transform: scale(1);
+.album-card:hover .album-play-icon {
+  transform: scale(1.05);
 }
 
-.y2k-play-label {
+.album-play-label {
   color: #ffffff;
   font-family: var(--font-title);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.y2k-details {
-  margin-bottom: 1rem;
-  flex-grow: 1;
+/* Card Text Details */
+.album-details {
+  padding: 0 1.4rem 1.4rem 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: -0.8rem;
+  position: relative;
+  z-index: 6;
 }
 
-.y2k-title {
+.album-title {
   font-family: var(--font-title);
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: var(--purple-dark);
   margin-bottom: 0.6rem;
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
-.title-sub {
+.album-title .title-sub {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--mauve);
@@ -1308,59 +1346,156 @@ footer {
   margin-top: 0.15rem;
 }
 
-.y2k-meta p {
+.album-meta p {
   font-size: 0.82rem;
   color: var(--purple-deep);
   margin-bottom: 0.35rem;
   line-height: 1.45;
 }
 
-.y2k-meta strong {
+.album-meta strong {
   color: var(--purple-dark);
 }
 
-.y2k-action-bar {
+/* 3D Carousel Navigation Buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1px solid rgba(158, 104, 153, 0.25);
+  color: var(--purple-dark);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 0.5rem;
-}
-
-.y2k-action-btn {
-  padding: 0.55rem 1.3rem;
-  border-radius: 50px;
-  border: none;
-  font-family: var(--font-title);
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: #ffffff;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(91, 55, 101, 0.12);
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  z-index: 20;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.y2k-action-btn:hover {
-  transform: scale(1.04);
+.carousel-nav-btn.prev-btn { left: 10px; }
+.carousel-nav-btn.next-btn { right: 10px; }
+
+.carousel-nav-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  background: var(--purple-dark);
+  color: var(--white);
+  box-shadow: 0 10px 25px rgba(91, 55, 101, 0.25);
 }
 
-/* Button Color Gradients */
-.btn-green { background: linear-gradient(135deg, #22c55e, #16a34a); }
-.btn-purple { background: linear-gradient(135deg, #a855f7, #9333ea); }
-.btn-pink { background: linear-gradient(135deg, #f472b6, #e91e63); }
-.btn-blue { background: linear-gradient(135deg, #60a5fa, #3b82f6); }
-.btn-yellow { background: linear-gradient(135deg, #facc15, #eab308); color: #331f00; }
-.btn-teal { background: linear-gradient(135deg, #2dd4bf, #14b8a6); }
-.btn-lavender { background: linear-gradient(135deg, #c084fc, #a855f7); }
-
-.y2k-stats {
+/* Dots Indicator */
+.carousel-dots {
   display: flex;
-  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.stat-item {
-  font-family: var(--font-title);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--purple-mid);
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(158, 104, 153, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  width: 24px;
+  border-radius: 10px;
+  background: var(--purple-dark);
+}
+
+/* 3D Position Classes applied dynamically by JS */
+.album-card.active-card {
+  transform: translateX(0) scale(1.08) translateZ(60px) rotateY(0deg);
+  opacity: 1;
+  z-index: 10;
+  filter: none;
+  box-shadow: 0 25px 50px rgba(91, 55, 101, 0.22);
+  border-color: var(--purple-mid);
+}
+
+.album-card.prev-card {
+  transform: translateX(-65%) scale(0.85) translateZ(-40px) rotateY(18deg);
+  opacity: 0.65;
+  z-index: 5;
+  filter: blur(1.5px);
+}
+
+.album-card.next-card {
+  transform: translateX(65%) scale(0.85) translateZ(-40px) rotateY(-18deg);
+  opacity: 0.65;
+  z-index: 5;
+  filter: blur(1.5px);
+}
+
+.album-card.far-prev-card {
+  transform: translateX(-110%) scale(0.7) translateZ(-80px) rotateY(28deg);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.album-card.far-next-card {
+  transform: translateX(110%) scale(0.7) translateZ(-80px) rotateY(-28deg);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+  .album-carousel-stage {
+    height: 450px;
+  }
+
+  .album-card {
+    width: 280px;
+    height: 410px;
+  }
+
+  .album-img-wrap {
+    height: 190px;
+  }
+
+  .album-card.prev-card {
+    transform: translateX(-48%) scale(0.82) rotateY(14deg);
+    opacity: 0.45;
+  }
+
+  .album-card.next-card {
+    transform: translateX(48%) scale(0.82) rotateY(-14deg);
+    opacity: 0.45;
+  }
+
+  .carousel-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .carousel-nav-btn.prev-btn { left: 0px; }
+  .carousel-nav-btn.next-btn { right: 0px; }
+}
+
+@media (max-width: 480px) {
+  .album-card {
+    width: 250px;
+    height: 390px;
+  }
+
+  .album-card.prev-card {
+    transform: translateX(-35%) scale(0.75) rotateY(10deg);
+    opacity: 0.25;
+  }
+
+  .album-card.next-card {
+    transform: translateX(35%) scale(0.75) rotateY(-10deg);
+    opacity: 0.25;
+  }
 }
 
 /* ================== BACKGROUND DECORATIONS ================== */

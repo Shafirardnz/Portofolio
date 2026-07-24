@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
 <body>
 
@@ -175,183 +175,173 @@
       <!-- Category 1: Game Portfolio -->
       <div class="portfolio-group">
         <h4 class="portfolio-group-title">Game Development</h4>
-        <div class="y2k-grid">
+        
+        <div class="album-carousel-container" id="gameCarousel">
+          <button class="carousel-nav-btn prev-btn" aria-label="Previous Game">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
           
-          <!-- Card 1: Guardian of Borneo Roots -->
-          <div class="y2k-card play-trigger" id="openTeaserBtn">
-            <!-- Top badge -->
-            <div class="y2k-badge badge-green">3D Action</div>
-            
-            <div class="y2k-img-container">
-              <img src="GuardiabOfBorneoRoots2.png" alt="Guardian Of Borneo Roots">
-              <div class="y2k-img-overlay">
-                <span class="y2k-play-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                </span>
-                <span class="y2k-play-label">Watch Teaser</span>
-              </div>
-            </div>
-            
-            <div class="y2k-details">
-              <h5 class="y2k-title">Guardian Of Borneo Roots <span class="title-sub">[3D Combat Adventure]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> Solo Developer | Unity (C#), Blender, UI/UX.</p>
-                <p><strong>Key Feature:</strong> Dynamic combat system, enemy AI, & 3D environmental design.</p>
-                <p><strong>Concept:</strong> A game highlighting forest conservation in Kalimantan.</p>
-              </div>
-            </div>
-            
-            <!-- Bottom action bar -->
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-green">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 5.0</span>
-              </div>
-            </div>
-          </div>
+          <div class="album-carousel-stage">
+            <div class="album-carousel-track">
 
-          <!-- Card 2: Code 666 -->
-          <div class="y2k-card">
-            <div class="y2k-badge badge-purple">3D Horror</div>
-            <div class="y2k-img-container">
-              <img src="Code666.png" alt="Code 666">
-            </div>
-            <div class="y2k-details">
-              <h5 class="y2k-title">Code 666 <span class="title-sub">[3D Horror Investigation]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> Programmer & Artist | Unity (C#), 3D Modeling.</p>
-                <p><strong>Key Feature:</strong> Immersive first-person view, tense puzzles, dark atmosphere.</p>
-                <p><strong>Concept:</strong> Investigation under the terror of mysterious clues in darkness.</p>
+              <!-- Card 1: Guardian of Borneo Roots -->
+              <div class="album-card play-trigger" id="openTeaserBtn" data-index="0">
+                <div class="album-badge">3D Action</div>
+                <div class="album-img-wrap">
+                  <img src="GuardiabOfBorneoRoots2.png" alt="Guardian Of Borneo Roots">
+                  <div class="album-img-gradient"></div>
+                  <div class="album-play-overlay">
+                    <span class="album-play-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </span>
+                    <span class="album-play-label">Watch Teaser</span>
+                  </div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">Guardian Of Borneo Roots <span class="title-sub">[3D Combat Adventure]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> Solo Developer | Unity (C#), Blender, UI/UX.</p>
+                    <p><strong>Key Feature:</strong> Dynamic combat system, enemy AI, & 3D environmental design.</p>
+                    <p><strong>Concept:</strong> A game highlighting forest conservation in Kalimantan.</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-purple">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 4.8</span>
-              </div>
-            </div>
-          </div>
 
-          <!-- Card 3: Fruity Boomz -->
-          <div class="y2k-card">
-            <div class="y2k-badge badge-pink">Casual</div>
-            <div class="y2k-img-container">
-              <img src="FruityBoomz.jpg" alt="Fruity Boomz">
-            </div>
-            <div class="y2k-details">
-              <h5 class="y2k-title">Fruity Boomz <span class="title-sub">[2D Match-3 Casual]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> Artist | Unity (C#), ibisPaintX, UI Design.</p>
-                <p><strong>Key Feature:</strong> Sweet fruits theme, relaxed gameplay, bright visual graphics.</p>
-                <p><strong>Concept:</strong> Pop puzzle match-3 with fun and colorful fruits.</p>
+              <!-- Card 2: Code 666 -->
+              <div class="album-card" data-index="1">
+                <div class="album-badge badge-alt">3D Horror</div>
+                <div class="album-img-wrap">
+                  <img src="Code666.png" alt="Code 666">
+                  <div class="album-img-gradient"></div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">Code 666 <span class="title-sub">[3D Horror Investigation]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> Programmer & Artist | Unity (C#), 3D Modeling.</p>
+                    <p><strong>Key Feature:</strong> Immersive first-person view, tense puzzles, dark atmosphere.</p>
+                    <p><strong>Concept:</strong> Investigation under the terror of mysterious clues in darkness.</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-pink">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 4.5</span>
-              </div>
-            </div>
-          </div>
 
-          <!-- Card 4: Kapuas Treasure Rush -->
-          <div class="y2k-card">
-            <div class="y2k-badge badge-blue">2D Adventure</div>
-            <div class="y2k-img-container">
-              <img src="KapuasTreasureRush.jpg" alt="Kapuas Treasure Rush">
-            </div>
-            <div class="y2k-details">
-              <h5 class="y2k-title">Kapuas Treasure Rush <span class="title-sub">[2D Adventure Platformer]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> Solo Developer | Unity (C#), ibisPaintX, UI/UX.</p>
-                <p><strong>Key Feature:</strong> River side-scroller, cultural elements, level design.</p>
-                <p><strong>Concept:</strong> A treasure hunting journey along the historic Kapuas River.</p>
+              <!-- Card 3: Fruity Boomz -->
+              <div class="album-card" data-index="2">
+                <div class="album-badge">Casual</div>
+                <div class="album-img-wrap">
+                  <img src="FruityBoomz.jpg" alt="Fruity Boomz">
+                  <div class="album-img-gradient"></div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">Fruity Boomz <span class="title-sub">[2D Match-3 Casual]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> Artist | Unity (C#), ibisPaintX, UI Design.</p>
+                    <p><strong>Key Feature:</strong> Sweet fruits theme, relaxed gameplay, bright visual graphics.</p>
+                    <p><strong>Concept:</strong> Pop puzzle match-3 with fun and colorful fruits.</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-blue">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 4.7</span>
+
+              <!-- Card 4: Kapuas Treasure Rush -->
+              <div class="album-card" data-index="3">
+                <div class="album-badge badge-alt">2D Adventure</div>
+                <div class="album-img-wrap">
+                  <img src="KapuasTreasureRush.jpg" alt="Kapuas Treasure Rush">
+                  <div class="album-img-gradient"></div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">Kapuas Treasure Rush <span class="title-sub">[2D Adventure Platformer]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> Solo Developer | Unity (C#), ibisPaintX, UI/UX.</p>
+                    <p><strong>Key Feature:</strong> River side-scroller, cultural elements, level design.</p>
+                    <p><strong>Concept:</strong> A treasure hunting journey along the historic Kapuas River.</p>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
           
+          <button class="carousel-nav-btn next-btn" aria-label="Next Game">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <div class="carousel-dots"></div>
         </div>
       </div>
 
       <!-- Category 2: Website Portfolio -->
       <div class="portfolio-group" style="margin-top: 4rem;">
         <h4 class="portfolio-group-title">Website Development</h4>
-        <div class="y2k-grid">
+        
+        <div class="album-carousel-container" id="webCarousel">
+          <button class="carousel-nav-btn prev-btn" aria-label="Previous Website">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
           
-          <!-- Card 1: Ayo Belajar Tajwid -->
-          <div class="y2k-card">
-            <div class="y2k-badge badge-yellow">Education</div>
-            <div class="y2k-img-container">
-              <img src="Tajwid.png" alt="Ayo Belajar Tajwid">
-            </div>
-            <div class="y2k-details">
-              <h5 class="y2k-title">Ayo Belajar Tajwid <span class="title-sub">[Web Learning Media]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> Programmer & UI/UX Design | HTML, CSS, JavaScript.</p>
-                <p><strong>Key Feature:</strong> Systematic modules, audio pronunciations, interactive quizzes.</p>
-                <p><strong>Concept:</strong> Helping children learn Tajweed rules systematically and fun.</p>
+          <div class="album-carousel-stage">
+            <div class="album-carousel-track">
+
+              <!-- Card 1: Ayo Belajar Tajwid -->
+              <div class="album-card" data-index="0">
+                <div class="album-badge">Education</div>
+                <div class="album-img-wrap">
+                  <img src="Tajwid.png" alt="Ayo Belajar Tajwid">
+                  <div class="album-img-gradient"></div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">Ayo Belajar Tajwid <span class="title-sub">[Web Learning Media]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> Programmer & UI/UX Design | HTML, CSS, JavaScript.</p>
+                    <p><strong>Key Feature:</strong> Systematic modules, audio pronunciations, interactive quizzes.</p>
+                    <p><strong>Concept:</strong> Helping children learn Tajweed rules systematically and fun.</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-yellow">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 5.0</span>
+
+              <!-- Card 2: KEMENGEZ -->
+              <div class="album-card" data-index="1">
+                <div class="album-badge badge-alt">Mental Health</div>
+                <div class="album-img-wrap">
+                  <img src="Kemengez.png" alt="KEMENGEZ">
+                  <div class="album-img-gradient"></div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">KEMENGEZ <span class="title-sub">[Z-Mental Health Portal]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> UI/UX Design | HTML, CSS, JavaScript, Figma.</p>
+                    <p><strong>Key Feature:</strong> Secure anonymous forum, educational space, stigma-free UI.</p>
+                    <p><strong>Concept:</strong> Safe digital harbor for Gen Z to share mental health stories.</p>
+                  </div>
+                </div>
               </div>
+
+              <!-- Card 3: Wawa's Store -->
+              <div class="album-card" data-index="2">
+                <div class="album-badge">E-Commerce</div>
+                <div class="album-img-wrap">
+                  <img src="WawasStore.png" alt="Wawa's Store">
+                  <div class="album-img-gradient"></div>
+                </div>
+                <div class="album-details">
+                  <h5 class="album-title">Wawa's Store <span class="title-sub">[Premium Furniture Landing]</span></h5>
+                  <div class="album-meta">
+                    <p><strong>Tech & Role:</strong> UI/UX Design | HTML, CSS, JavaScript, Figma.</p>
+                    <p><strong>Key Feature:</strong> Elegant sofa showcases, user-friendly booking flow.</p>
+                    <p><strong>Concept:</strong> Modern landing page emphasizing comfort and clean aesthetics.</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
-          <!-- Card 2: KEMENGEZ -->
-          <div class="y2k-card">
-            <div class="y2k-badge badge-teal">Mental Health</div>
-            <div class="y2k-img-container">
-              <img src="Kemengez.png" alt="KEMENGEZ">
-            </div>
-            <div class="y2k-details">
-              <h5 class="y2k-title">KEMENGEZ <span class="title-sub">[Z-Mental Health Portal]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> UI/UX Design | HTML, CSS, JavaScript, Figma.</p>
-                <p><strong>Key Feature:</strong> Secure anonymous forum, educational space, stigma-free UI.</p>
-                <p><strong>Concept:</strong> Safe digital harbor for Gen Z to share mental health stories.</p>
-              </div>
-            </div>
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-teal">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 4.9</span>
-              </div>
-            </div>
-          </div>
+          <button class="carousel-nav-btn next-btn" aria-label="Next Website">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
 
-          <!-- Card 3: Wawa's Store -->
-          <div class="y2k-card">
-            <div class="y2k-badge badge-lavender">E-Commerce</div>
-            <div class="y2k-img-container">
-              <img src="WawasStore.png" alt="Wawa's Store">
-            </div>
-            <div class="y2k-details">
-              <h5 class="y2k-title">Wawa's Store <span class="title-sub">[Premium Furniture Landing]</span></h5>
-              <div class="y2k-meta">
-                <p><strong>Tech & Role:</strong> UI/UX Design | HTML, CSS, JavaScript, Figma.</p>
-                <p><strong>Key Feature:</strong> Elegant sofa showcases, user-friendly booking flow.</p>
-                <p><strong>Concept:</strong> Modern landing page emphasizing comfort and clean aesthetics.</p>
-              </div>
-            </div>
-            <div class="y2k-action-bar">
-              <button class="y2k-action-btn btn-lavender">Play Now</button>
-              <div class="y2k-stats">
-                <span class="stat-item">⭐ 4.6</span>
-              </div>
-            </div>
-          </div>
-
+          <div class="carousel-dots"></div>
         </div>
       </div>
     </section>
